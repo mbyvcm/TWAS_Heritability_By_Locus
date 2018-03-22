@@ -1,3 +1,18 @@
+
+
+# Christopher Medway
+#
+# Estimates phenotypic heritability (using HESS) in discrete loci before and after conditioning on the
+# expression of a gene within the locus (generated using TWAS). Calculates the change in heritabilty
+# due to TWAS signal
+#
+# USE:
+# Rscript --vanilla main.R \
+#     -n <row number in loci.txt file> \
+#     -sumstats_dir <directory containing GWAS sumstats by CHR>
+#
+#
+
 require(argparse, quietly = T, warn.conflicts = F)
 
 source("./bin/append_conditional_summary_stats.r")
@@ -24,7 +39,7 @@ gwas_summary_stats_dir <- args$sumstats_dir
 outdir <- paste0(root_dir,"output/")
 cond_dir <- args$cond_dir
 
-print(array_no)
+print(array_no) # locus number
 
 # get locus details
 df <- read.table(paste0(root_dir,"loci.txt"), header=T, stringsAsFactors = F, sep = " ")
